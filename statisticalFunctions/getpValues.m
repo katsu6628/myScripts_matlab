@@ -1,0 +1,9 @@
+%calculate pValues from features matrix
+function pValues_cell = getpValues(targetArray, pairedDet, singleStar_alpha)
+[pValue_bothP,~,~,pValue_multP,allMatrix_P] = ...
+    testAnalysis(targetArray, true, pairedDet, singleStar_alpha);
+[pValue_bothNP,~,~,pValue_multNP,allMatrix_NP] = ...
+    testAnalysis(targetArray, false,pairedDet,  singleStar_alpha);
+pValues_cell = {pValue_bothP, pValue_multP,allMatrix_P, ...
+    pValue_bothNP, pValue_multNP, allMatrix_NP};
+end
