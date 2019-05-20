@@ -1,3 +1,5 @@
+%cohensD discription could change between researchers
+%some use different algorithm between paired- and non-paired
 function [x,y] = CohensD(data1, data2)
 ave1 = mean(data1);
 ave2 = mean(data2);

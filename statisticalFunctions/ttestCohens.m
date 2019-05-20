@@ -4,9 +4,9 @@
 %Output - [h,p,ci,stats,cohens, cohens unbiased]
 function [h,p,ci,stats,cohens,cohens_] = ttestCohens(data1, data2, alpha, tail, pairedDet)
 if pairedDet
-    [h,p,ci,stats] = ttest2(data1,data2,'Alpha',alpha, 'Tail', tail);
-else
     [h,p,ci,stats] = ttest(data1,data2,'Alpha',alpha, 'Tail', tail);
+else
+    [h,p,ci,stats] = ttest2(data1,data2,'Alpha',alpha, 'Tail', tail);
 end
 [cohens, cohens_] = CohensD(data1, data2);
 end

@@ -5,12 +5,14 @@ pos = get(fig, 'Position');
 set(fig, 'PaperPositionMode', 'Auto', 'PaperUnits', ...
     'Inches', 'PaperSize', [pos(3), pos(4)]);
 if pngDet
-    tmp = [opDir, 'png/'];
+%     tmp = [opDir, 'png/'];
+tmp = opDir;
     [~,~,~]=mkdir(tmp);
     saveas(fig, [tmp, saveName], 'png');
 end
 if pdfDet
-    tmp = [opDir, 'pdf/'];
+%     tmp = [opDir, 'pdf/'];
+tmp = opDir;
     [~,~,~]=mkdir(tmp);
     print(fig, [tmp, saveName], '-dpdf', '-r0');
 end
