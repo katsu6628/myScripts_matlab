@@ -37,9 +37,9 @@ else
     [~,~,stats] = kruskalwallis(DATA,[],'off');
 end
 
-% [multiple compare] Tukey method or steel-dwass
-[C, ~,~,~] = multcompare(stats,'Display','off');
 pValueMatrix_mult = zeros(size(DATA,2),size(DATA,2));
+% [multiple compare Tukey method or steel-dwass
+[C, ~,~,~] = multcompare(stats,'Display','off');
 for i = 1:size(C, 1)
     pValueMatrix_mult(C(i,1),C(i,2)) = C(i,6);
     pValueMatrix_mult(C(i,2),C(i,1)) = C(i,6);

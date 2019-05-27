@@ -37,6 +37,9 @@ end
 end
 
 function [p,h,statsVal] = calcWilcoxon(Data1, Data2, alpha_, tail, pairedDet)
+if all(isnan(Data1)) || all(isnan(Data2))
+    p = nan; h=nan; statsVal = nan;
+else
 if pairedDet
     [p,h,stats] = signrank(Data1,Data2,...
         'tail', tail, 'alpha', alpha_, 'method', 'exact');
@@ -45,5 +48,6 @@ else
     [p,h,stats] =   ranksum(Data1,Data2,...
         'tail', tail, 'alpha', alpha_);
     statsVal = stats.ranksum;
+end
 end
 end

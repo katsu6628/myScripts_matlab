@@ -11,20 +11,20 @@ function [pValueMatrix_both,pValueMatrix_right,pValueMatrix_left,allMatrix]...
 pValueMatrix_both = zeros(size(DATA,2),size(DATA,2));
 pValueMatrix_right = zeros(size(DATA,2),size(DATA,2));
 pValueMatrix_left= zeros(size(DATA,2),size(DATA,2));
-allMatrix = nan(size(DATA,2), size(DATA,2),11);
+allMatrix = nan(size(DATA,2), size(DATA,2),12);
 %Run a test for all pivot_condition vs other condition
 for pivot_cond = 1:size(DATA,2)
     %do the test against every other conditions
     for cond_i = 1:size(DATA,2)
-        [h,p,ci,stats,co,co_] =...
+        [h,p,ci,stats,co,co_, co_p] =...
             ttestCohens(DATA(:,pivot_cond),DATA(:,cond_i),alpha,'both', pairedDet);
-        outputData = [h,p,stats.tstat,co,co_];
+        outputData = [h,p,stats.tstat,co,co_,co_p];
         pValueMatrix_both(pivot_cond, cond_i) = p;
-        [h,p,ci,stats,~,~] = ...
+        [h,p,ci,stats,~,~,~] = ...
             ttestCohens(DATA(:,pivot_cond),DATA(:,cond_i),alpha/2,'right', pairedDet);
         outputData = [outputData, h,p,stats.tstat];
                 pValueMatrix_right(pivot_cond, cond_i) = p;
-        [h,p,ci,stats,~,~] =...
+        [h,p,ci,stats,~,~,~] =...
             ttestCohens(DATA(:,pivot_cond),DATA(:,cond_i),alpha/2,'left', pairedDet);
         outputData = [outputData, h,p,stats.tstat];
                 pValueMatrix_left(pivot_cond, cond_i) = p;
