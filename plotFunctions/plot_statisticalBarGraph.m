@@ -1,3 +1,4 @@
+% plot a bargraph with stars of significant difference
 function b = plot_statisticalBarGraph(DATA, pValueMatrix, condNames, ...
     featName,doubleStar_alpha,singleStar_alpha, xticks_)
 if nargin < 7

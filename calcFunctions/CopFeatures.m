@@ -16,7 +16,7 @@ swayAmp = [mean(abs(ML)), mean(abs(AP)),mean(RD)];
 swayVel = [sum(abs(diff(ML)))/timeDuration,...
     sum(abs(diff(AP)))/timeDuration,...
     sum(sqrt((diff(AP).^2 + diff(ML).^2)))/timeDuration];
-%APが負方向の速度を持つ場合は180°回転したベクトルを考える
+%when AP_velocity is negative, turn the vector 180deg
 diffAP_modified = diff(AP);
 diffAP_modified(diff(AP)<0) = -diffAP_modified(diff(AP)<0);
 diffML_modified = diff(ML);

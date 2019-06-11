@@ -1,3 +1,4 @@
+% plot a boxplot with stars of significant difference
 function plot_statisticalBoxplot(DATA, pValueMatrix, condNames, ...
     featName,doubleStar_alpha,singleStar_alpha)
 
