@@ -5,13 +5,13 @@
 %trial2 (                    )
 %trial3 (                    )
 %Output - [struct] result of t-test, csvsheet
-function [pValueMatrix_both,pValueMatrix_right,pValueMatrix_left,allMatrix]...
+function [pValueMatrix_both,pValueMatrix_right,pValueMatrix_left,saveMatrix]...
     = my_wilcoxon(DATA, alpha, pairedDet)
 %make a Matrix that has all the p-value of t-test[condition * conditions]
 pValueMatrix_both = zeros(size(DATA,2),size(DATA,2));
 pValueMatrix_right = zeros(size(DATA,2),size(DATA,2));
 pValueMatrix_left= zeros(size(DATA,2),size(DATA,2));
-allMatrix = nan(size(DATA,2), size(DATA,2),11);
+saveMatrix = nan(size(DATA,2), size(DATA,2),11);
 %Run a test for all pivot_condition vs other condition
 for pivot_cond = 1:size(DATA,2)
     %do the test against every other conditions
@@ -31,7 +31,7 @@ for pivot_cond = 1:size(DATA,2)
         outputData = [outputData, h,p,statsVal];
         pValueMatrix_left(pivot_cond, cond_i) = p;
         
-        allMatrix(pivot_cond, cond_i, :) = outputData;
+        saveMatrix(pivot_cond, cond_i, :) = outputData;
     end
 end
 end
