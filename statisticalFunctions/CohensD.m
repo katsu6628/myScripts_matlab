@@ -16,11 +16,11 @@ Cohens_ = Cohens * (1-(3/(4*(num1+num2)-9)));
 %%%%%
 %%correction for paired groups
 if num1~=num2
-    
-end
+    Cohens_paired = nan;
+else
 %the correlation coefficient of the paired datas
 R= corrcoef(data1, data2);
 r = R(1,2);
 Cohens_paired = Cohens / (sqrt(2*(1-r)));
-%%%%%
+end
 end
