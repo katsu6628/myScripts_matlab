@@ -1,48 +1,46 @@
-function f = myFigure(args)
-f = figure(args);
+function fig= myFigure(posDet, figRatio)
+if nargin == 0
+    posDet = 0;
+end
+if nargin == 1
+    figRatio = 0;
+end
+%define figure size by
+%posDet 1 - full screen
+%       2 - half screen
+%       4 - quarter screen
+%       8 - 1/8 screen
+%       0 - left corner of screen
+P1 = [0, 0, 1920, 1080];
+P2 = P1; P2(4) = P2(4)/2;
+P4 = P2; P4(4) = P4(4)/2;
+P8 = P4; P8(4) = P8(4)/2;
+P0 = P1; P0([3,4]) = P0([3,4])/2;
+switch posDet
+    case 1
+        P = P1;
+    case 2
+        P = P2;
+    case 4
+        P = P4;
+    case 8
+        P = P8;
+    case 0
+        P = P0;
+end
+% modify figure size by ratio
+if figRatio ~= 0
+    if P(3) <= P(4)
+        P(4) = P(3) * figRatio(2)/figRatio(1);
+    end
+    if P(4) <= P(3)
+        P(3) = P(4) * figRatio(1)/figRatio(2);
+    end
+end
+fig = figure('Position', P);
 
-f.PaperType
+fig.PaperUnits = 'centimeters';
+fig.Color = [1,1,1];
 
-f.PaperUnits = 'centimeters';
-f.PaperPosition = [2 2 18 24];
 
-f.Units = 'centimeters';
-f.Position = [2 2 18 24];
-
-f.Color = 'w';
-
-axh = axes('Units','centimeters','Position',[2 2 10 10]);
-
-axh.FontName = 'Arial'; 
-
-%% Font
-set(0,'defaultAxesFontSize',20);
-set(0,'defaultAxesFontName','Alias');
-set(0,'defaultAxesFontWeight','demi'); % normal/demi/bold
-set(0,'defaultTextFontSize',20);
-set(0,'defaultTextFontName','Alias');
-set(0,'defaultTextFontWeight','demi');
-
-%% Line width
-set(0,'defaultAxesLineWidth', 2); % axis
-set(0,'defaultLineLineWidth', 4); % plot
-
-%% color
-clorder = ...
-    [  0,   0, 255; % blue
-       0, 128,   0; % green
-     255,   0,   0; % red
-     204,   8, 204; % purple
-     222, 125,   0; % brown
-       0,  51, 153; % amber (difficult distinguish between blue)
-      64,  64,  64];% dark gray  
-set(0,'defaultAxesColorOrder',clorder/255);
-
-%% grid on & box on
-set(0,'DefaultAxesXGrid','on');
-set(0,'DefaultAxesYGrid','on');
-set(0,'DefaultAxesBox','on');
-
-%% don't change size in copy/paste
-set(0,'DefaultFigurePaperPositionMode','auto');
 end

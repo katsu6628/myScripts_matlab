@@ -60,10 +60,10 @@ for features_i = 1:size(pMatrix_cell, 1)
     
     if features_i == length(Label_cell) || subidx == 6
         saveName = [input_head, num2str(figidx)];
-        my_saveFig(opDir_cell{1}, saveName, fig((figidx-1)*4 + 1), true, true);
-        my_saveFig(opDir_cell{2}, saveName, fig((figidx-1)*4 + 2), true, true);
-        my_saveFig(opDir_cell{3}, saveName, fig((figidx-1)*4 + 3), true, true);
-        my_saveFig(opDir_cell{4}, saveName, fig((figidx-1)*4 + 4), true, true);
+        mySaveFig(opDir_cell{1}, saveName, fig((figidx-1)*4 + 1), true, true);
+        mySaveFig(opDir_cell{2}, saveName, fig((figidx-1)*4 + 2), true, true);
+        mySaveFig(opDir_cell{3}, saveName, fig((figidx-1)*4 + 3), true, true);
+        mySaveFig(opDir_cell{4}, saveName, fig((figidx-1)*4 + 4), true, true);
         subidx = 0;
     end
     subidx = subidx + 1;
