@@ -44,20 +44,12 @@ function saveFig(opDir, fig, saveName, pngDet, pdfDet)
         %     tmp = [opDir, 'png/'];
         tmp = opDir;
         [~,~,~]=mkdir(tmp);
-<<<<<<< HEAD
-        
-=======
-        saveas(fig, [tmp, saveName], 'png');
->>>>>>> origin/master
+        saveas(fig, [tmp, saveName, '.png'], 'png');
       end
       if pdfDet
         %     tmp = [opDir, 'pdf/'];
         tmp = opDir;
         [~,~,~]=mkdir(tmp);
-<<<<<<< HEAD
         print(fig, [tmp, '/',saveName, '.pdf'], '-dpdf',  '-painters', '-r0', '-bestfit');
-=======
-        print(fig, [tmp, saveName], '-dpdf',  '-painters', '-r0');
->>>>>>> origin/master
       end
     end
