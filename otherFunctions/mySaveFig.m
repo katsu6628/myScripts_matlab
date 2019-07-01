@@ -44,12 +44,12 @@ function saveFig(opDir, fig, saveName, pngDet, pdfDet)
         %     tmp = [opDir, 'png/'];
         tmp = opDir;
         [~,~,~]=mkdir(tmp);
-        saveas(fig, [tmp, saveName], 'png');
+        
       end
       if pdfDet
         %     tmp = [opDir, 'pdf/'];
         tmp = opDir;
         [~,~,~]=mkdir(tmp);
-        print(fig, [tmp, saveName], '-dpdf',  '-painters', '-r0');
+        print(fig, [tmp, '/',saveName, '.pdf'], '-dpdf',  '-painters', '-r0', '-bestfit');
       end
     end
