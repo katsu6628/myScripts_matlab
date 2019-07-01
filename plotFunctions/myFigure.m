@@ -1,6 +1,7 @@
 function fig= myFigure(posDet, figRatio)
 if nargin == 0
     posDet = 0;
+    figRatio = 0;
 end
 if nargin == 1
     figRatio = 0;
