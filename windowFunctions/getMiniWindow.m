@@ -42,4 +42,8 @@ for k = alltask_vec
     end
     preTaskBorder = timetask_s(end);
 end
+if isnan(taskType_vec(end))
+    window_border(end, :) = [];
+    taskType_vec(end) = [];
+end
 end

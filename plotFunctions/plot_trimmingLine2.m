@@ -3,6 +3,7 @@
 %index number or the x Value
 %plot trimming line between tasks
 function plot_trimmingLine2(task_vec, x_vec)
+  grid off
   switchX = [x_vec(find(diff(task_vec)))', length(task_vec)];
 %plot trimming lines for each tasks
 ylim_ = ylim;

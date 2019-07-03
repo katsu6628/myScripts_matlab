@@ -1,5 +1,6 @@
 %plot trimming line between tasks
 function plot_trimmingLine(switchIdx, task_vec, winIdx_vec, time_vec)
+grid off
 %plot trimming lines for each tasks
 ylim_ = ylim;
 for sw_i = switchIdx

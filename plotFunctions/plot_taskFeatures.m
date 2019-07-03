@@ -1,5 +1,12 @@
 function switchIdx = plot_taskFeatures(feat_vec, task_vec, time_vec, ...
     winIdx_vec, task_name, color_)
+if nargin == 5
+    tmp = get(gca, 'colororder');
+    color_ = tmp(1,:);
+end
+
+
+hold on
   hold on
 switchIdx = [find(diff(task_vec)); length(task_vec)]';
 presw = 1;

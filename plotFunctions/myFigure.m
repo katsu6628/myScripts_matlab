@@ -42,6 +42,3 @@ fig = figure('Position', P);
 
 fig.PaperUnits = 'centimeters';
 fig.Color = [1,1,1];
-
-
-end
