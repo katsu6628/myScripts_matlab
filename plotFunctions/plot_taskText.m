@@ -16,22 +16,17 @@ for sw_i = switchIdx
             %             'HorizontalAlignment', 'Right', 'VerticalAlignment', vertPos);
             tmpcnt = tmpcnt + 1;
         end
-    else
+    else %if sw_i is the end
         if task_vec(sw_i) ~= 0
             text(sw_i , ylim_(1), task_name{abs(task_vec(sw_i))},...
                 'HorizontalAlignment', 'Right', 'VerticalAlignment', vertPos);
             tmpcnt = tmpcnt + 1;
-        end
-    if task_vec(sw_i) > 0
-        text(sw_i , ylim_(1), task_name{task_vec(sw_i)},...
-            'HorizontalAlignment', 'Right', 'VerticalAlignment', vertPos);
-        tmpcnt = tmpcnt + 1;
-    elseif sw_i ~= switchIdx(end) && abs(task_vec(sw_i)) ~= abs(task_vec(sw_i+1))
-        %task_vec(sw_i+1) > 0)% || ...
+        elseif sw_i ~= switchIdx(end) && abs(task_vec(sw_i)) ~= abs(task_vec(sw_i+1))
+            %task_vec(sw_i+1) > 0)% || ...
             %(sw_i == switchIdx(end) && task_vec(sw_i) <= 0)
-        text(sw_i , ylim_(1), 'n/a',...
-            'HorizontalAlignment', 'Right', 'VerticalAlignment', vertPos);
-        tmpcnt = tmpcnt + 1;
+            text(sw_i , ylim_(1), 'n/a',...
+                'HorizontalAlignment', 'Right', 'VerticalAlignment', vertPos);
+            tmpcnt = tmpcnt + 1;
+        end
     end
-end
 end

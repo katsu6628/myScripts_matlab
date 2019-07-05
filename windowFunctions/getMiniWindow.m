@@ -28,12 +28,15 @@ for k = alltask_vec
     crossingTask_logic = and(isnan(taskType_vec),...
         window_border(:,1) < timetask_s(1));
     a = find(crossingTask_logic); %separete into half
+    %separate the border crossing tasks into half and label them with pre/post task on that border
     if any(a)
         precrossingTask_logic = false(window_no,1);
         postcrossingTask_logic = false(window_no,1);
+        %first half of the crossing border windows
         precrossingTask_logic(a(1):floor(mean(a))) = true;
         precrossingTask_logic = and(isnan(taskType_vec), ...
             precrossingTask_logic);
+        %second half of the crossing border windows
         postcrossingTask_logic(floor(mean(a))+1:a(end)) = true;
         postcrossingTask_logic = and(isnan(taskType_vec), ...
             postcrossingTask_logic);
@@ -42,7 +45,7 @@ for k = alltask_vec
     end
     preTaskBorder = timetask_s(end);
 end
-if isnan(taskType_vec(end))
+while isnan(taskType_vec(end))
     window_border(end, :) = [];
     taskType_vec(end) = [];
 end
