@@ -4,6 +4,7 @@ function addPlot_EventMarks(fig, eventLabels, eventTime, time_vec, subAxisIsInde
 %x-axis is following the index - 1, if following time - 0
 colors_ = lines(length(eventLabels));
 figure(fig)
+hold on;
 allaxis = flip(findall(fig, 'type', 'axes'));
 for axis_idx = 1:length(allaxis)
     subplot(allaxis(axis_idx));
