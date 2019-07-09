@@ -44,7 +44,7 @@ function saveFig(opDir, fig, saveName, pngDet, pdfDet)
         %     tmp = [opDir, 'png/'];
         tmp = opDir;
         [~,~,~]=mkdir(tmp);
-        saveas(fig, [tmp, saveName, '.png'], 'png');
+        saveas(fig, [tmp, '/', saveName, '.png'], 'png');
       end
       if pdfDet
         %     tmp = [opDir, 'pdf/'];

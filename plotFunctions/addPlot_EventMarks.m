@@ -26,7 +26,7 @@ for axis_idx = 1:length(allaxis)
         plotIdx = eventTime;
     end
     
-    deltaY = diff(ylim_)/10;
+    deltaY = diff(ylim_)/150;
     cnt = 0;
     for event = eventLabels
         cnt = cnt + 1;
