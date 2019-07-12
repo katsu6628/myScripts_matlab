@@ -13,7 +13,11 @@ for i = 1:task_no
             trigger_index(i,j)=a(1);
         else
           %store the first index of Time, when it goes beyond task_time(i,j)
+%           try
             trigger_index(i,j) = a(1)-1;
+%           catch
+%               keyboard
+%           end
         end
     end
 end
