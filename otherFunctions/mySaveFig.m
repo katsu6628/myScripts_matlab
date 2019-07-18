@@ -1,5 +1,5 @@
 %save figure my style
-function mySaveFig(opDir_cell, saveName, fig, pngDet, pdfDet)
+function mySaveFig(fig, opDir_cell, saveName, pngDet, pdfDet)
 %modify figure before saving
 % fig.PaperPositionMode = 'auto';
 % pos = fig.PaperPosition;
