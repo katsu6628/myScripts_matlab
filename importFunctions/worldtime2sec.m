@@ -1,4 +1,4 @@
-%% Function to convert hh:mm:ss styled time into seconds
+%% Function to convert hh:mm:ss style time into seconds
 function worldtime_s = worldtime2sec (worldtime)
 %split hh:mm:ss into cells
 worldtime_cell= textscan(char(worldtime), '%s %s %s', 'Delimiter', ':');
