@@ -27,29 +27,33 @@ function mySaveFig(fig, opDir_cell, saveName, pngDet, pdfDet)
 % end
 
 %save to all directories inside opDir_cell
-  if iscell(opDir_cell)
+if iscell(opDir_cell)
     for op_i = 1:length(opDir_cell)
-      opDir = opDir_cell{op_i};
-      saveFig(opDir, fig, saveName, pngDet, pdfDet);
+        opDir = opDir_cell{op_i};
+        saveFig(opDir, fig, saveName, pngDet, pdfDet);
     end
-  else
-      opDir = opDir_cell;
+else
+    opDir = opDir_cell;
     saveFig(opDir, fig, saveName, pngDet, pdfDet);
-  end
+end
 end
 
 
 function saveFig(opDir, fig, saveName, pngDet, pdfDet)
-      if pngDet
-        %     tmp = [opDir, 'png/'];
-        tmp = opDir;
-        [~,~,~]=mkdir(tmp);
-        saveas(fig, [tmp, '/', saveName, '.png'], 'png');
-      end
-      if pdfDet
-        %     tmp = [opDir, 'pdf/'];
-        tmp = opDir;
-        [~,~,~]=mkdir(tmp);
-        print(fig, [tmp, '/',saveName, '.pdf'], '-dpdf',  '-painters', '-r0', '-bestfit');
-      end
-    end
+if pngDet
+    %     tmp = [opDir, 'png/'];
+    tmp = opDir;
+    [~,~,~]=mkdir(tmp);
+    saveas(fig, [tmp, '/', saveName, '.png'], 'png');
+end
+if pdfDet
+    %     tmp = [opDir, 'pdf/'];
+    set(fig,'Units','Inches');
+    pos = get(fig,'Position');
+    set(fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+
+    tmp = opDir;
+    [~,~,~]=mkdir(tmp);
+    print(fig, [tmp, '/',saveName, '.pdf'], '-dpdf',  '-painters', '-r0', '-bestfit');
+end
+end
