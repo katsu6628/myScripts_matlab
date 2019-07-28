@@ -1,4 +1,5 @@
 %plot event marks to subplots
+%x-axis is following the index - 1, if following time - 0
 function addSubplot_EventMarks(eventLabels,...
      eventTime,time_vec, colors_, thisAxis_subAxisIsIndex)
     ylim_ = ylim;
