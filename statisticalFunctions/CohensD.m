@@ -17,10 +17,17 @@ Cohens_ = Cohens * (1-(3/(4*(num1+num2)-9)));
 %%correction for paired groups
 if num1~=num2
     Cohens_paired = nan;
+elseif length(unique(data1))==1 || length(unique(data2))==1
+    Cohens_paired = Cohens;
 else
 %the correlation coefficient of the paired datas
-R= corrcoef(data1, data2);
-r = R(1,2);
-Cohens_paired = Cohens / (sqrt(2*(1-r)));
+% R= corrcoef(data1, data2);
+% r = R(1,2);
+% Cohens_paired = Cohens / (sqrt(2*(1-r)));
+
+%%%%paired data cohens'd formula from R
+%%http://monge.tec.fukuoka-u.ac.jp/r_analysis/effect_size_01.html
+[~,~,~,stat] = ttest(data1,data2);
+Cohens_paired = stat.tstat*sqrt(1/num1);
 end
 end
