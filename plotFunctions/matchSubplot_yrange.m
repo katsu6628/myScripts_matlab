@@ -2,7 +2,8 @@
 function matchSubplot_yrange(fig, axisArray)
 figure(fig)
 allaxis = flip(findall(fig, 'type', 'axes'));
-
+if length(allaxis) == 1
+else
 if nargin == 1
     axisArray = [length(allaxis), 1];
 end
@@ -39,4 +40,6 @@ for sub_col = 1:axisArray(2)
                 squeeze(ylim_(sub_col, ax_lr,:));
         end
     end
+end
+end
 end

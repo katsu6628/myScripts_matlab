@@ -1,6 +1,6 @@
 %% calculate the mean affective profile that integrates all subject profile
 function dataTagettasks_tbl = makeAllParticipant_tbl(data_cell, targetTasks,...
-    step_width, windowLength, varNames)
+    step_width, windowLength, varNames, sub_vec)
 
 dataArray = [];
 taskVec = [];
@@ -25,7 +25,7 @@ window_border = [window_border', window_border' + windowLength];
 
 
 varNameCell = strcat(cellstr(repmat(varNames',size(data_cell,1),1)),...
-    '_sub',reshape(repmat(num2str([1:size(data_cell,1)]')', length(varNames),1),[],1));
+    '_sub',reshape(repmat(num2str([sub_vec]')', length(varNames),1),[],1));
 
 dataTagettasks_tbl = array2table([idx_vec, Participant_vec, Day_vec, ...
     window_border, taskVec, dataArray],...

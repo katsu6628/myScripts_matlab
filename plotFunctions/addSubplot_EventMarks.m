@@ -1,8 +1,9 @@
 %plot event marks to subplots
 %x-axis is following the index - 1, if following time - 0
 function addSubplot_EventMarks(eventLabels,...
-     eventTime,time_vec, colors_, thisAxis_subAxisIsIndex)
+     eventTime,time_vec, thisAxis_subAxisIsIndex)
     ylim_ = ylim;
+    colors_ = lines(length(eventLabels));
 %     title('');
     %according to the subplots x-axis, set the plotting x-axis
     if thisAxis_subAxisIsIndex

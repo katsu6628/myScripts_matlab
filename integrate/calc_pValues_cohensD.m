@@ -6,10 +6,10 @@ function [pValues_ ,cohensD_, baseline_vec] = ...
 % if max(NBackCvNBackT_array(:))<1.0
 %     baseline_vec = ones(1,size(NBackCvNBackT_array,2))*0.5;
 % else
-%     baseline_vec = median(NBackCvNBackT_array(baselineLogic,:),1);
-baseline_vec = prctile(feat_array(baselineLogic,:),25);
-% baseline_vec = prctile(NBackCvNBackT_array(baselineLogic,:),40);
-% baseline_vec = mean(NBackCvNBackT_array(baselineLogic,:),1);
+    baseline_vec = median(feat_array(baselineLogic,:),1);
+% baseline_vec = prctile(feat_array(baselineLogic,:),25);
+% baseline_vec = prctile(feat_array(baselineLogic,:),40);
+% baseline_vec = mean(feat_array(baselineLogic,:),1);
 % end
 
 singleStar_alpha = 0.05;
