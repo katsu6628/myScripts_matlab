@@ -28,6 +28,8 @@ switch posDet
         P = P8;
     case 0
         P = P0;
+    otherwise
+        P = P1; P(4) = P(4)/posDet;
 end
 % modify figure size by ratio
 if figRatio ~= 0

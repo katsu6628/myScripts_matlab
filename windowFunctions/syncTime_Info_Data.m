@@ -13,6 +13,13 @@ time_s = importedTable.time_abs - importedTable.time_abs(1);
 
 task_vec = zeros(size(importedTable,1), 1);
 for task_i = 1:size(trigger_index,1)
+    if trigger_index(task_i,1)>trigger_index(task_i,2)
+        trigger_index(task_i,2) = trigger_index(task_i,1);
+    end
+        if trigger_index(task_i,1)==0
+       trigger_index(task_i,1) = 1;
+        end
+    
     task_vec(trigger_index(task_i,1):trigger_index(task_i,2)) = task_i;
 end
 

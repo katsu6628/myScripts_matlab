@@ -11,14 +11,15 @@ function [pValueMatrix_both,pValueMatrix_right,pValueMatrix_left,saveMatrix]...
 pValueMatrix_both = zeros(size(DATA,2),size(DATA,2));
 pValueMatrix_right = zeros(size(DATA,2),size(DATA,2));
 pValueMatrix_left= zeros(size(DATA,2),size(DATA,2));
-saveMatrix = nan(size(DATA,2), size(DATA,2),11);
+saveMatrix = nan(size(DATA,2), size(DATA,2),12);
 %Run a test for all pivot_condition vs other condition
 for pivot_cond = 1:size(DATA,2)
     %do the test against every other conditions
     for cond_i = 1:size(DATA,2)
         [p,h,statsVal] = calcWilcoxon(DATA(:,pivot_cond),DATA(:,cond_i),...
             alpha, 'both', pairedDet);%, 'method', 'exact');
-        outputData = [h,p,statsVal, nan,nan];
+        [co,co_,cohens_paired] = CohensD(DATA(:,pivot_cond),DATA(:,cond_i));
+        outputData = [h,p,statsVal, co,co_,cohens_paired];
         pValueMatrix_both(pivot_cond, cond_i) = p;
         
         [p,h,statsVal] = calcWilcoxon(DATA(:,pivot_cond),DATA(:,cond_i),...

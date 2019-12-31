@@ -3,7 +3,7 @@
 function [trigger_index, startend_index] = ...
     getTaskIndex(task_time_abs, startend_time, Time_abs)
 %% edit the data to make it useful
-task_no = length(task_time_abs);
+task_no = size(task_time_abs, 1);
 %calculate the index of the start/end time of each tasks
 trigger_index = zeros(task_no,2);
 for i = 1:task_no

@@ -3,7 +3,7 @@
 function csvName = ...
     op_pMatrixCsv(allMatrix, condNames, featName, op_path, csvName_head, alpha_)
 formatSpec = '%s,%f,%f,%f,%f,%f,%f,,%f,%f,%f,,%f,%f,%f\n';
-csvName = strcat(featName, csvName_head,'-ttest', '.csv');
+csvName = strcat(featName, '_', csvName_head,'-ttest', '.csv');
 csvPath = strcat(op_path, csvName);
 [~,~,~] = mkdir(op_path);
 fid = fopen(csvPath, 'wt');

@@ -20,17 +20,17 @@ allLength = length(taskVec);
 idx_vec = [1:allLength]';
 Participant_vec = zeros(allLength, 1);
 Day_vec = Participant_vec;
-window_border = linspace(0, step_width*(allLength-1), allLength);
-window_border = [window_border', window_border' + windowLength];
+time_vec = linspace(0, step_width*(allLength-1), allLength);
 
 
 varNameCell = strcat(cellstr(repmat(varNames',size(data_cell,1),1)),...
-    '_sub',reshape(repmat(num2str([sub_vec]')', length(varNames),1),[],1));
+    '_sub',reshape(repmat(cellstr(num2str([sub_vec]'))', length(varNames),1),[],1));
+varNameCell = strrep(varNameCell, ' ', '');
 
 dataTagettasks_tbl = array2table([idx_vec, Participant_vec, Day_vec, ...
-    window_border, taskVec, dataArray],...
+    time_vec', taskVec, dataArray],...
     'VariableNames', {'index','ParticipantID', 'Day', 'Starttime_s', ...
-        'Endtime_s', 'TaskLabel', varNameCell{:}, varNames{:}});
+        'TaskLabel', varNameCell{:}, varNames{:}});
 end
 
 

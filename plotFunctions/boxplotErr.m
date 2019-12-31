@@ -20,7 +20,7 @@ if scatter_det
         scatter(tmp, DATA(:,i), 'k');
     end
 end
-ylabel(featName);
+ylabel(featName, 'Interpreter', 'none');
 h = gca;
 % h.XTickLabelRotation = -20;
 end
